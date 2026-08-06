@@ -5,10 +5,10 @@
   "packageManager": "pnpm@11.20.0",
   "scripts": {
     "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
-    "build": "\"$npm_execpath\" run typecheck",
-    "build:artifacts": "\"$npm_execpath\" -r --if-present run build",
+    "build": "node \"$npm_execpath\" run typecheck",
+    "build:artifacts": "node \"$npm_execpath\" -r --if-present run build",
     "typecheck:libs": "tsc --build",
-    "typecheck": "\"$npm_execpath\" run typecheck:libs && \"$npm_execpath\" -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "typecheck": "node \"$npm_execpath\" run typecheck:libs && node \"$npm_execpath\" -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
   "private": true,
   "devDependencies": {
