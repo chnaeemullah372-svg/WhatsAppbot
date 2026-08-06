@@ -76,6 +76,19 @@ onlyBuiltDependencies:
   - protobufjs
   - unrs-resolver
 
+# pnpm 11's actual build-approval key is `allowBuilds` (map of name: true).
+# `approvedBuilds` (name+version list, added by a previous auto-fix) does
+# NOT work — verified empirically: with only approvedBuilds set, pnpm
+# 11.20.0 still throws ERR_PNPM_IGNORED_BUILDS. Keep allowBuilds as the
+# real fix; keep onlyBuiltDependencies for pnpm 10 hosts.
+allowBuilds:
+  '@swc/core': true
+  '@whiskeysockets/baileys': true
+  esbuild: true
+  msw: true
+  protobufjs: true
+  unrs-resolver: true
+
 # pnpm v11 explicit build approval (name+version format)
 approvedBuilds:
   - name: '@whiskeysockets/baileys'
