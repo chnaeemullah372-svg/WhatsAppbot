@@ -1,0 +1,3 @@
+- [WhatsApp panel decisions](whatsapp-panel.md) — single multiWA engine (legacy removed); never sends read receipts ("seen"); local QR; admin monitoring-only; per-number isolation via composite (account_phone, jid) PK; wa_* tables wiped by admin "delete record"/session-clear (empty ≠ bug).
+- [VPS self-host deploy](vps-deploy.md) — Replit DATABASE_URL=internal `helium` (unreachable off-platform→own Postgres); pnpm11 ignored-builds exit-1 (run build binaries directly); pm2 restart keeps stale env (delete+start to reload).
+- [Monorepo db build gotcha](monorepo-db-build.md) — after editing `lib/db/src/schema`, run `npx tsc -b lib/db` (decls emit to dist; artifacts use project refs) or api-server typecheck reads stale types; `drizzle-kit push` is a separate DB step.
