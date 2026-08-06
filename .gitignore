@@ -10,6 +10,15 @@ artifacts/.user-sessions/
 artifacts/uploads/
 artifacts/mockup-sandbox/
 artifacts/*/dist/
+
+# Hostinger's shared-hosting build step can't execute native binaries
+# (esbuild/rollup) — EACCES on spawnSync regardless of pnpm build-script
+# config. Prebuild locally/in CI and commit the output so Hostinger only
+# ever runs plain `node dist/index.mjs`, no native binary execution needed.
+!artifacts/api-server/dist/
+!artifacts/api-server/dist/**
+!artifacts/support-connect/dist/
+!artifacts/support-connect/dist/**
 .env
 .env.*
 backups/

@@ -84,7 +84,11 @@ onlyBuiltDependencies:
 allowBuilds:
   '@swc/core': true
   '@whiskeysockets/baileys': true
-  esbuild: true
+  # false, not true: Hostinger's shared-hosting build dir blocks executing
+  # esbuild's native binary (EACCES on spawnSync) regardless of approval,
+  # so its postinstall/validation script is explicitly skipped here. The
+  # committed prebuilt artifacts/*/dist/ output means it's never invoked.
+  esbuild: false
   msw: true
   protobufjs: true
   unrs-resolver: true
